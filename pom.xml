@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.akshat</groupId>
-    <artifactId>Springt_Security</artifactId>
+    <artifactId>Spring_Security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Springt_Security</name>
     <description>Springt_Security</description>

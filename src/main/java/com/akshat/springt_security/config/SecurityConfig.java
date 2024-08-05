@@ -1,23 +1,39 @@
-package com.akshat.springt_security;
+package com.akshat.springt_security.config;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 // @EnableWebSecurity is used to enable Spring Security in our project.
 public class SecurityConfig {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public AuthenticationProvider authProvider(){
+
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
+
+        return provider;
+    }
+
 
     @Bean
     // The @Bean annotation is used where we want to create an object of a class and store it in the Spring container.
@@ -35,7 +51,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
+    /*@Bean
     public UserDetailsService userDetailsService(){
 
         UserDetails user = User
@@ -55,7 +71,7 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(user,admin);
         // The InMemoryUserDetailsManager class is used to store the user details in the memory.
 
-    }
+    }*/
 
 }
 

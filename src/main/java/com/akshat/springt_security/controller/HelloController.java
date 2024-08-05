@@ -1,4 +1,4 @@
-package com.akshat.springt_security;
+package com.akshat.springt_security.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;

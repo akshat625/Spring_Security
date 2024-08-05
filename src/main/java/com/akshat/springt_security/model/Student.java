@@ -1,4 +1,4 @@
-package com.akshat.springt_security;
+package com.akshat.springt_security.model;
 
 
 import lombok.AllArgsConstructor;

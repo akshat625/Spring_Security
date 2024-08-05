@@ -1,5 +1,6 @@
-package com.akshat.springt_security;
+package com.akshat.springt_security.controller;
 
+import com.akshat.springt_security.model.Student;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
